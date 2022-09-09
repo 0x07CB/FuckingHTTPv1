@@ -33,7 +33,7 @@ class UFW_RulesSetters(object):
     # function to default deny all incoming traffic to the specified port
     def default_deny_all_incoming_traffic_to_port(self,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw default deny incoming to any port "+str(port)
+            command_="sudo ufw default deny incoming to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -48,7 +48,7 @@ class UFW_RulesSetters(object):
     # function to allow all outgoing traffic to the specified ip destination
     def default_allow_all_outgoing_traffic_to_ip(self,ip_destination,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw allow outgoing to "+ip_destination+" port "+str(port)
+            command_="sudo ufw allow outgoing to "+ip_destination+" port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -63,7 +63,7 @@ class UFW_RulesSetters(object):
     # function to use ufw with subprocess function (with return of output) to allow an precise IP to access in inbound connection to the http server in this machine with an default port of 80
     def allow_ip(self,ip_allowed_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw allow from "+ip_allowed_inbound_client+" to any port "+str(port)
+            command_="sudo ufw allow from "+ip_allowed_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -78,7 +78,7 @@ class UFW_RulesSetters(object):
     # and same thing to deny an IP
     def deny_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw deny from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw deny from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -93,7 +93,7 @@ class UFW_RulesSetters(object):
     # and same things to LIMIT an IP
     def limit_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw limit from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw limit from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -108,7 +108,7 @@ class UFW_RulesSetters(object):
     # and same things to REJECT an IP
     def reject_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw reject from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw reject from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -123,7 +123,7 @@ class UFW_RulesSetters(object):
     # and same things to delete an allow rule from an IP
     def delete_allow_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw delete allow from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw delete allow from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -138,7 +138,7 @@ class UFW_RulesSetters(object):
     # and same things to delete an deny rule from an IP
     def delete_deny_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw delete deny from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw delete deny from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -153,7 +153,7 @@ class UFW_RulesSetters(object):
     # and same things to delete an limit rule from an IP
     def delete_limit_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw delete limit from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw delete limit from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -168,7 +168,7 @@ class UFW_RulesSetters(object):
     # and same things to delete an reject rule from an IP
     def delete_reject_ip(self,ip_denied_inbound_client,port=80,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw delete reject from "+ip_denied_inbound_client+" to any port "+str(port)
+            command_="sudo ufw delete reject from "+ip_denied_inbound_client+" to any port "+str(port)
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -182,7 +182,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def reload_ufw(self,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw reload"
+            command_="sudo ufw reload"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -196,7 +196,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def systemd_installation_of_ufw_service(self,EXIT_ON_FAILURE=True):
         try:
-            command_="systemctl enable ufw"
+            command_="sudo systemctl enable ufw"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -210,7 +210,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def systemd_start_of_ufw_service(self,EXIT_ON_FAILURE=True):
         try:
-            command_="systemctl start ufw"
+            command_="sudo systemctl start ufw"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -224,7 +224,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def systemd_stop_of_ufw_service(self,EXIT_ON_FAILURE=True):
         try:
-            command_="systemctl stop ufw"
+            command_="sudo systemctl stop ufw"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -238,7 +238,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def systemd_restart_of_ufw_service(self,EXIT_ON_FAILURE=True):
         try:
-            command_="systemctl restart ufw"
+            command_="sudo systemctl restart ufw"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -252,7 +252,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def systemd_status_of_ufw_service(self,EXIT_ON_FAILURE=True):
         try:
-            command_="systemctl status ufw"
+            command_="sudo systemctl status ufw"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -266,7 +266,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def systemd_disable_of_ufw_service(self,EXIT_ON_FAILURE=True):
         try:
-            command_="systemctl disable ufw"
+            command_="sudo systemctl disable ufw"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -280,7 +280,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def ufw_status(self,ufwstatus_verbose_mode=True, EXIT_ON_FAILURE=True):
         try:
-            command_="ufw status"
+            command_="sudo ufw status"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -296,7 +296,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def ufw_enable_command(self,EXIT_ON_FAILURE=True):
         try:
-            command_="ufw enable"
+            command_="sudo ufw enable"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -310,7 +310,7 @@ class UFW_RulesSetters(object):
                 exit(1)
     def ufw_disable_command(self, EXIT_ON_FAILURE=True):
         try:
-            command_="ufw disable"
+            command_="sudo ufw disable"
             verbose_printing_system_command_information_of_execution(command_)
             process = subprocess.Popen(command_, stdout=subprocess.PIPE, shell=True)
             (output, err) = process.communicate()
@@ -423,7 +423,7 @@ class StaticServer:
         return self
     # function to start the server
     def _start(self):
-        self.server = Cmd('python3 -m http.server {} -d {}'.format(self.port, self.path))
+        self.server = Cmd('sudo python3 -m http.server {} -d {}'.format(self.port, self.path))
         self.server(_bg=True)
         return self
     # function to get the url
