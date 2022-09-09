@@ -423,7 +423,7 @@ class StaticServer:
         return self
     # function to start the server
     def _start(self):
-        self.server = Cmd('sudo python3 -m http.server {} -d {}'.format(self.port, self.path))
+        self.server = subprocess.check_output('sudo python3 -m http.server {} -d {}'.format(self.port, self.path), shell=True)
         self.server(_bg=True)
         return self
     # function to get the url
